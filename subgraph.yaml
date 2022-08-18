@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Moloch
-    network: kovan
+    network: mainnet
     source:
       address: "0x3155755b79aa083bd953911c92705b7aa82a18f9"
       abi: Moloch
