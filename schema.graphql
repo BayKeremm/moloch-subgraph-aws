@@ -149,3 +149,52 @@ type Proposal @entity {
 #   GRACEPERIOD
 #   PROCESSED
 # }
+type Minion @entity {
+  id: ID!
+  createdAt: String!
+  minionAddress: Bytes!
+  molochAddress: Bytes!
+  moloch: Moloch!
+  details: String!
+  minionType: String!
+  proposals: [Proposal!] @derivedFrom(field: "minion")
+  uberHausAddress: Bytes
+  uberHaus: Moloch
+  uberHausDelegateRewardFactor: BigInt
+  uberHausDelegate: Bytes
+  safeAddress: Bytes
+  safeMinionVersion: String
+  crossChainMinion: Boolean!
+  foreignChainId: String
+  foreignSafeAddress: Bytes
+  bridgeModule: String
+  version: String
+  minQuorum: BigInt
+  streams: [MinionStream!] @derivedFrom(field: "minion")
+}
+
+type MinionStream @entity {
+  id: ID!
+  proposalId: String!
+  createdAt: String!
+  to: Bytes!
+  tokenAddress: Bytes!
+  superTokenAddress: Bytes!
+  rate: BigInt!
+  minDeposit: BigInt!
+  proposer: Bytes!
+  executed: Boolean!
+  executedBlock: BigInt
+  executedAt: String
+  execTxHash: Bytes
+  active: Boolean!
+  ctx: Bytes!
+  canceledAt: String
+  canceledBy: Bytes
+  minion: Minion!
+}
+
+type SafeMinion @entity {
+  id: ID!
+  minions: [Minion!]!
+}

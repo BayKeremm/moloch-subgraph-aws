@@ -44,3 +44,25 @@ dataSources:
           handler: handleUpdateDelegateKey
 
       file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: V2SafeMinionFactory
+    network: mainnet
+    source:
+      address: '0xC1e0A9DB9eA830c52603798481045688c8AE99C2'
+      abi: V2SafeMinionFactory
+      startBlock: 118 
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - Moloch
+        - SafeMinion
+      abis:
+        - name: V2SafeMinionFactory
+          file: ./abis/V2SafeMinionFactory.json
+      eventHandlers:
+        - event: SummonMinion(indexed address,indexed address,indexed address,string,string,uint256)
+          handler: handleSummonedSafeMinionV2
+      file: ./src/safe-minion-factory-mapping.ts
+
