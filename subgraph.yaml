@@ -8,9 +8,9 @@ dataSources:
     name: Moloch
     network: kovan
     source:
-      address: '0xc73bB4DdD7Ac90fD20dDd6F1817e97a0AB183D4a'
+      address: "0x3155755b79aa083bd953911c92705b7aa82a18f9"
       abi: Moloch
-      startBlock: 16689700
+      startBlock: 118
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
